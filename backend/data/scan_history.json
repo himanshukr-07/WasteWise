@@ -1,0 +1,63 @@
+[
+  {
+    "id": "20260914173602651704",
+    "timestamp": "2026-09-14T17:36:02.651746+00:00",
+    "item": "pen",
+    "category": "Metal",
+    "confidence": 0.9,
+    "confidence_label": "High (model-estimated)",
+    "observation": "The image shows two pens, one purple and one black, held in a hand against a white background.",
+    "recommendation": "Pens should be segregated at source as metal waste. For small everyday metal items like pens, there is no universal bin color or guaranteed recycling route. The exact disposal depends on local municipal collection systems. When local rules are unknown, check with your local authority or authorized waste collector.",
+    "sources": [
+      {
+        "title": "AI WasteWise Metal Waste Guidance",
+        "url": "https://cpcb.nic.in/rules-7/"
+      }
+    ],
+    "grounded": true,
+    "source_relevance": "category-specific",
+    "review_required": false
+  },
+  {
+    "id": "20260914173422625279",
+    "timestamp": "2026-09-14T17:34:22.625344+00:00",
+    "item": "bottle",
+    "category": "Plastic",
+    "confidence": 0.9,
+    "confidence_label": "High (model-estimated)",
+    "observation": "The image shows a clear plastic bottle with a silver cap, containing a small amount of water.",
+    "recommendation": "Plastic bottles should be segregated as plastic waste at the source. The specific disposal route (collection, recycling, or disposal) depends on the local waste management system in your area. Check with your local municipality for collection points or recycling options, as not all plastic bottles are universally recyclable and local rules vary.",
+    "sources": [
+      {
+        "title": "CPCB Guidelines for Assessment for violation of Plastic Waste Management Rules, 2016",
+        "url": "https://cpcb.nic.in/uploads/plasticwaste/EC_Regime_PWM.pdf"
+      }
+    ],
+    "grounded": true,
+    "source_relevance": "category-specific",
+    "review_required": false
+  },
+  {
+    "id": "20260914173005727689",
+    "timestamp": "2026-09-14T17:30:05.727762+00:00",
+    "item": "batteries",
+    "category": "E-waste",
+    "confidence": 0.9,
+    "confidence_label": "High (model-estimated)",
+    "observation": "The image shows a variety of batteries, which are electronic waste.",
+    "recommendation": "Batteries are not classified as e-waste in India. They must be segregated and disposed of via dedicated battery collection or take-back routes under the Battery Waste Management Rules, 2022 (amended in 2025). Do not place batteries in general household waste. Always verify local authority instructions for specific collection points, as local rules may vary.",
+    "sources": [
+      {
+        "title": "E-Waste (Management) Rules, 2022",
+        "url": "https://cpcb.nic.in/uploads/Projects/E-Waste/e-waste_rules_2022.pdf"
+      },
+      {
+        "title": "Battery Waste Management Amendment Rules, 2025",
+        "url": "https://cpcb.nic.in/uploads/hwmd/Battery-WasteManagementRules-2025.pdf"
+      }
+    ],
+    "grounded": true,
+    "source_relevance": "category-specific",
+    "review_required": true
+  }
+]

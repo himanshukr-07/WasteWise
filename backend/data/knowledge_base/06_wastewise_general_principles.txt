@@ -1,0 +1,12 @@
+Title: WasteWise General Waste Guidance
+Source URL: https://cpcb.nic.in/rules-7/
+
+WasteWise is an educational decision-support prototype. Its core principles are:
+1. Identify the likely material or item first.
+2. Prefer source segregation and separate storage of waste.
+3. Use specialised channels for e-waste, batteries and biomedical or hazardous waste where applicable.
+4. Do not invent local bin colors, recycling availability or legal obligations.
+5. When local rules are unknown, clearly say that local authority instructions should be checked.
+6. If an image is unclear, use Other / Unknown and recommend verification.
+
+These principles are intended to make AI responses cautious, transparent and grounded in the available knowledge base.

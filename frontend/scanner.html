@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste Scanner | WasteWise</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">♻ <span>WasteWise</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="scanner.html">Scanner</a>
+    <a href="assistant.html">AI Assistant</a>
+    <a href="history.html">History</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="guidelines.html">Guidelines</a>
+    <a href="responsible-ai.html">Responsible AI</a>
+  </nav>
+</header>
+
+<main class="container page">
+  <section class="page-heading">
+    <p class="eyebrow">MULTIMODAL AI</p>
+    <h1>Waste Scanner</h1>
+    <p>Upload an image to identify the waste item.</p>
+  </section>
+
+  <section class="scanner-grid">
+    <div class="panel">
+      <label class="upload-box" for="imageInput">
+        <div class="upload-icon">📷</div>
+        <h2>Upload waste image</h2>
+        <p>JPG, JPEG, PNG or WEBP</p>
+        <input id="imageInput" type="file" accept="image/*" hidden />
+      </label>
+      <img id="preview" class="preview hidden" alt="Selected waste" />
+      <button id="analyzeBtn" class="btn primary full" disabled>Analyze Waste</button>
+      <div id="status" class="status"></div>
+    </div>
+
+    <div class="panel result-panel">
+      <div class="panel-title">Analysis Result</div>
+      <div id="resultEmpty" class="empty-state">
+        <div>♻️</div>
+        <p>Your analysis result will appear here.</p>
+      </div>
+      <div id="result" class="hidden">
+        <div class="result-row"><span>Detected item</span><strong id="item"></strong></div>
+        <div class="result-row"><span>Category</span><strong id="category"></strong></div>
+        <div class="result-row"><span>Confidence</span><strong id="confidence"></strong></div>
+        <div class="result-row"><span>Confidence label</span><strong id="confidenceLabel"></strong></div>
+        <div class="result-block">
+          <span>Observation</span>
+          <p id="observation"></p>
+        </div>
+        <div class="recommendation">
+          <span>♻ Recommended action</span>
+          <p id="recommendation"></p>
+          <small id="source"></small>
+          <div id="reviewBox" class="review-box hidden"></div>
+          <small>WasteWise is a decision-support prototype. Verify local disposal requirements before acting.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><p>WasteWise • Local AI prototype</p></footer>
+<script src="js/scanner.js"></script>
+</body>
+</html>

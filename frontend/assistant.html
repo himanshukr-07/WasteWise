@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Assistant | WasteWise</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">♻ <span>WasteWise</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="scanner.html">Scanner</a>
+    <a class="active" href="assistant.html">AI Assistant</a>
+    <a href="history.html">History</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="guidelines.html">Guidelines</a>
+    <a href="responsible-ai.html">Responsible AI</a>
+  </nav>
+</header>
+
+<main class="container page narrow">
+  <section class="page-heading">
+    <p class="eyebrow">CONVERSATIONAL AI</p>
+    <h1>Ask WasteWise</h1>
+    <p>Ask questions about waste segregation and disposal.</p>
+  </section>
+
+  <section class="panel chat-panel">
+    <div id="messages" class="messages">
+      <div class="message assistant">Hello! Ask me a waste-management question.</div>
+    </div>
+    <form id="chatForm" class="chat-form">
+      <input id="question" type="text" placeholder="e.g. How should I dispose of a battery?" autocomplete="off" />
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+    <p id="chatStatus" class="status"></p>
+  </section>
+</main>
+
+<footer><p>WasteWise • Answers are grounded in the local WasteWise knowledge base.</p></footer>
+<script src="js/assistant.js"></script>
+</body>
+</html>

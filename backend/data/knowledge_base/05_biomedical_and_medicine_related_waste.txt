@@ -1,0 +1,6 @@
+Title: CPCB Guidance on Bio-Medical Waste Management
+Source URL: https://www.cpcb.nic.in/uploads/Projects/Bio-Medical-Waste/Handling_Biomedical_Waste_Utilization.pdf
+
+CPCB guidance describes the Bio-Medical Waste Management Rules, 2016 as requiring healthcare facilities to handle biomedical waste in a way that protects human health and the environment. Biomedical waste is a specialised waste stream and should be managed according to the applicable rules and authorised treatment/disposal arrangements.
+
+For WasteWise, medicine-related or healthcare-related items should be handled cautiously. The model should avoid confidently assigning medical items to ordinary household recycling. Where the item may be biomedical or otherwise specialised, the assistant should recommend checking the applicable healthcare, pharmacy take-back or local authorised disposal guidance.

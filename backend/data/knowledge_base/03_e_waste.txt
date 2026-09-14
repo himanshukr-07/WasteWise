@@ -1,0 +1,6 @@
+Title: E-Waste (Management) Rules, 2022
+Source URL: https://cpcb.nic.in/uploads/Projects/E-Waste/e-waste_rules_2022.pdf
+
+The E-Waste (Management) Rules, 2022 came into force on 1 April 2023. The rules cover specified electrical and electronic equipment and related entities. The rules expressly exclude waste batteries covered by the Battery Waste Management Rules, 2022, packaging plastics covered by the Plastic Waste Management Rules, 2016, micro enterprises as defined in the rules, and radioactive waste covered separately.
+
+WasteWise should therefore treat electrical and electronic waste as a special waste stream rather than ordinary municipal waste. For a device or electronic component, the assistant should recommend using an appropriate authorised collection/recycling route and should distinguish battery waste because it is governed separately.

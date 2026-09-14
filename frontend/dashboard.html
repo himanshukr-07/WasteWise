@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard • WasteWise</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">♻ <span>WasteWise</span></div>
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="scanner.html">Scanner</a>
+    <a href="assistant.html">AI Assistant</a>
+    <a href="history.html">History</a>
+    <a class="active" href="dashboard.html">Dashboard</a>
+    <a href="guidelines.html">Guidelines</a>
+    <a href="responsible-ai.html">Responsible AI</a>
+  </nav>
+  </header>
+
+  <main class="container page dashboard-page">
+    <p class="eyebrow">SUSTAINABILITY ANALYTICS</p>
+    <h1>WasteWise Dashboard</h1>
+    <p class="subtitle">Turn waste scans into simple, actionable sustainability insights.</p>
+
+    <section class="stats dashboard-stats">
+      <div class="metric-card"><strong id="totalScans">0</strong><span>Total scans</span></div>
+      <div class="metric-card"><strong id="categoriesSeen">0</strong><span>Categories seen</span></div>
+      <div class="metric-card"><strong id="groundingRate">0%</strong><span>Category-grounded scans</span></div>
+      <div class="metric-card"><strong id="reviewRequired">0</strong><span>Scans needing review</span></div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card analytics-card">
+        <div class="card-heading"><h2>Waste distribution</h2><span id="distributionNote">Based on saved scans</span></div>
+        <div id="categoryBars" class="bar-list"></div>
+        <div id="categoryEmpty" class="empty-state hidden"><p>No scans yet. Use the Waste Scanner to create data.</p></div>
+      </article>
+
+      <article class="card analytics-card">
+        <div class="card-heading"><h2>Grounding quality</h2><span>RAG evidence status</span></div>
+        <div class="quality-grid">
+          <div><strong id="specificCount">0</strong><span>Category-specific</span></div>
+          <div><strong id="limitedCount">0</strong><span>Limited</span></div>
+          <div><strong id="noneCount">0</strong><span>No grounding</span></div>
+        </div>
+        <div class="quality-track"><div id="groundingFill" class="quality-fill"></div></div>
+        <p id="qualityText" class="muted">Run scans to see grounding quality.</p>
+      </article>
+
+      <article class="card analytics-card full-width">
+        <div class="card-heading"><h2>Scan activity</h2><span>Last 14 active dates</span></div>
+        <div id="dailyChart" class="daily-chart"></div>
+        <div id="dailyEmpty" class="empty-state hidden"><p>No scan activity available yet.</p></div>
+      </article>
+    </section>
+
+    <section class="dashboard-note">
+      <div>
+        <strong>How to use these insights</strong>
+        <p>Use category trends to identify which waste streams appear most often. Review limited or ungrounded scans before using the recommendations operationally.</p>
+      </div>
+      <a class="btn secondary" href="scanner.html">Scan another item</a>
+    </section>
+  </main>
+
+  <footer><p>WasteWise • SDG 12 — Responsible Consumption and Production</p></footer>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History | WasteWise</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">♻ <span>WasteWise</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="scanner.html">Scanner</a>
+    <a href="assistant.html">AI Assistant</a>
+    <a class="active" href="history.html">History</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="guidelines.html">Guidelines</a>
+    <a href="responsible-ai.html">Responsible AI</a>
+  </nav>
+</header>
+
+<main class="container page">
+  <section class="page-heading">
+    <p class="eyebrow">SCAN ANALYTICS</p>
+    <h1>Scan History</h1>
+    <p>Review previous AI waste identifications and category trends.</p>
+  </section>
+
+  <section class="stats dashboard-stats">
+    <div><strong id="totalScans">0</strong><span>Total scans</span></div>
+    <div><strong id="topCategory">—</strong><span>Most scanned category</span></div>
+    <div><strong id="uniqueCategories">0</strong><span>Categories seen</span></div>
+  </section>
+
+  <section class="panel table-panel">
+    <div class="panel-title">Recent scans</div>
+    <div id="historyEmpty" class="empty-state compact"><div>♻️</div><p>No scans yet. Analyze a waste image to build your history.</p></div>
+    <div id="historyTableWrap" class="table-wrap hidden">
+      <table>
+        <thead><tr><th>Item</th><th>Category</th><th>Confidence</th><th>Date</th><th>Grounding</th></tr></thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer><p>WasteWise • Local AI prototype</p></footer>
+<script src="js/history.js"></script>
+</body>
+</html>
