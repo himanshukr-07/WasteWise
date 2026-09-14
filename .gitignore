@@ -88,3 +88,6 @@ build/
 # Local ZIP backups
 # =========================
 *.zip
+
+# Runtime application data
+backend/data/scan_history.json
