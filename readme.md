@@ -53,3 +53,7 @@ WasteWise is an educational decision-support prototype. Grounded evidence is pre
 
 ### Human-in-the-loop feedback
 The Waste Scanner lets users confirm a result or submit a corrected waste category. Feedback is stored locally for evaluation and is not used for automatic model retraining. Runtime feedback and scan-history files are intentionally excluded from Git.
+
+## Final QA
+
+WasteWise includes automated tests and a manual end-to-end QA checklist. See [`docs/final-qa.md`](docs/final-qa.md) for the validation plan covering the scanner, AI assistant, RAG, history, dashboard, feedback, security, and privacy.

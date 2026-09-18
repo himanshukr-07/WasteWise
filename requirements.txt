@@ -5,3 +5,5 @@ ollama
 pydantic
 qdrant-client
 Pillow
+
+pytest
