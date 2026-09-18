@@ -11,6 +11,10 @@ const groundingFill = document.getElementById('groundingFill');
 const qualityText = document.getElementById('qualityText');
 const dailyChart = document.getElementById('dailyChart');
 const dailyEmpty = document.getElementById('dailyEmpty');
+const feedbackTotal = document.getElementById('feedbackTotal');
+const feedbackCorrect = document.getElementById('feedbackCorrect');
+const feedbackIncorrect = document.getElementById('feedbackIncorrect');
+const feedbackText = document.getElementById('feedbackText');
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>'"]/g, (char) => ({
@@ -79,6 +83,23 @@ async function loadDashboard() {
 
     renderCategoryBars(counts, Number(data.total_scans || 0));
     renderDaily(Array.isArray(data.daily_counts) ? data.daily_counts : []);
+
+    try {
+      const feedbackResponse = await fetch('/api/feedback/stats');
+      if (feedbackResponse.ok) {
+        const feedback = await feedbackResponse.json();
+        feedbackTotal.textContent = feedback.total_feedback ?? 0;
+        feedbackCorrect.textContent = feedback.correct ?? 0;
+        feedbackIncorrect.textContent = feedback.incorrect ?? 0;
+        if (feedback.accuracy == null) {
+          feedbackText.textContent = 'No feedback has been submitted yet.';
+        } else {
+          feedbackText.textContent = `${feedback.accuracy}% of feedback responses confirmed the model result. Corrections are retained as evaluation signals, not as automatic model retraining.`;
+        }
+      }
+    } catch (_) {
+      feedbackText.textContent = 'Feedback statistics are temporarily unavailable.';
+    }
   } catch (error) {
     qualityText.textContent = error.message;
     categoryEmpty.classList.remove('hidden');

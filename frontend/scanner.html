@@ -60,6 +60,30 @@
           <p id="recommendation"></p>
           <small id="source"></small>
           <div id="reviewBox" class="review-box hidden"></div>
+          <div id="feedbackBox" class="feedback-box hidden" aria-live="polite">
+            <div class="feedback-question"><strong>Was this result helpful and correct?</strong><span>Anonymous feedback helps evaluate WasteWise.</span></div>
+            <div class="feedback-actions">
+              <button type="button" id="feedbackCorrect" class="btn secondary">✓ Yes</button>
+              <button type="button" id="feedbackIncorrect" class="btn secondary">✕ No</button>
+            </div>
+            <div id="correctionForm" class="correction-form hidden">
+              <label for="correctedCategory">What is the correct category?</label>
+              <div class="correction-row">
+                <select id="correctedCategory">
+                  <option value="Organic">Organic</option>
+                  <option value="Paper">Paper</option>
+                  <option value="Plastic">Plastic</option>
+                  <option value="Glass">Glass</option>
+                  <option value="Metal">Metal</option>
+                  <option value="E-waste">E-waste</option>
+                  <option value="Hazardous">Hazardous</option>
+                  <option value="Other / Unknown">Other / Unknown</option>
+                </select>
+                <button type="button" id="submitCorrection" class="btn primary">Submit</button>
+              </div>
+            </div>
+            <div id="feedbackStatus" class="feedback-status"></div>
+          </div>
           <small>WasteWise is a decision-support prototype. Verify local disposal requirements before acting.</small>
         </div>
       </div>

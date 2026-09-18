@@ -1,93 +1,39 @@
-# =========================
 # Python
-# =========================
 __pycache__/
 *.py[cod]
 *.pyo
-*.pyd
 
-# =========================
 # Virtual environments
-# =========================
 .venv/
 venv/
 env/
 
-# =========================
-# Environment / secrets
-# =========================
+# Secrets / local environment
 .env
 .env.*
 !.env.example
 
-# =========================
-# IDE / Editor
-# =========================
+# IDE / OS
 .vscode/
 .idea/
-
-# =========================
-# OS files
-# =========================
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# =========================
-# Logs / temporary files
-# =========================
-*.log
-*.tmp
-*.temp
-
-# =========================
-# Testing / coverage
-# =========================
+# Testing / caches
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
+.ruff_cache/
 
-# =========================
-# Local databases / vector DB
-# =========================
+# Local vector store / generated runtime data
 backend/data/qdrant/
-*.db
-*.sqlite
-*.sqlite3
-
-# =========================
-# Uploaded / user-generated data
-# =========================
+backend/data/scan_history.json
+backend/data/feedback.json
 uploads/
 temp/
 tmp/
 
-# =========================
-# Python local cache
-# =========================
-.mypy_cache/
-.ruff_cache/
-
-# =========================
-# Node dependencies
-# =========================
-node_modules/
-
-# =========================
-# Build output
-# =========================
-dist/
-build/
-
-# =========================
-# Ollama / large local model files
-# =========================
-*.gguf
-
-# =========================
-# Local ZIP backups
-# =========================
+# Logs / archives
+*.log
 *.zip
-
-# Runtime application data
-backend/data/scan_history.json
