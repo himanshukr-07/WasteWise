@@ -1,6 +1,8 @@
 const imageInput = document.getElementById('imageInput');
 const preview = document.getElementById('preview');
 const analyzeBtn = document.getElementById('analyzeBtn');
+const clearBtn = document.getElementById('clearBtn');
+const uploadBox = document.getElementById('uploadBox');
 const statusEl = document.getElementById('status');
 const resultEmpty = document.getElementById('resultEmpty');
 const result = document.getElementById('result');
@@ -14,26 +16,82 @@ const submitCorrection = document.getElementById('submitCorrection');
 
 let selectedFile = null;
 let currentHistoryId = null;
+let objectUrl = null;
 
-imageInput.addEventListener('change', () => {
-  selectedFile = imageInput.files?.[0] ?? null;
+function isSupportedImage(file) {
+  return file && ['image/jpeg', 'image/png', 'image/webp'].includes(file.type);
+}
+
+function setSelectedFile(file) {
+  if (!isSupportedImage(file)) {
+    statusEl.textContent = 'Please choose a JPG, PNG, or WEBP image.';
+    statusEl.classList.add('error');
+    return;
+  }
+  selectedFile = file;
   currentHistoryId = null;
   result.classList.add('hidden');
   resultEmpty.classList.remove('hidden');
   feedbackBox.classList.add('hidden');
   correctionForm.classList.add('hidden');
   feedbackStatus.textContent = '';
-
-  if (!selectedFile) {
-    preview.classList.add('hidden');
-    analyzeBtn.disabled = true;
-    return;
-  }
-
-  preview.src = URL.createObjectURL(selectedFile);
+  if (objectUrl) URL.revokeObjectURL(objectUrl);
+  objectUrl = URL.createObjectURL(file);
+  preview.src = objectUrl;
   preview.classList.remove('hidden');
   analyzeBtn.disabled = false;
-  statusEl.textContent = `${selectedFile.name} selected.`;
+  clearBtn.classList.remove('hidden');
+  statusEl.textContent = `${file.name} selected.`;
+  statusEl.classList.remove('error');
+}
+
+imageInput.addEventListener('change', () => {
+  const file = imageInput.files?.[0] ?? null;
+  if (file) setSelectedFile(file);
+});
+
+['dragenter', 'dragover'].forEach((eventName) => {
+  uploadBox.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    uploadBox.classList.add('dragging');
+  });
+});
+
+['dragleave', 'drop'].forEach((eventName) => {
+  uploadBox.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    uploadBox.classList.remove('dragging');
+  });
+});
+
+uploadBox.addEventListener('drop', (event) => {
+  const file = event.dataTransfer?.files?.[0];
+  if (file) setSelectedFile(file);
+});
+
+uploadBox.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    imageInput.click();
+  }
+});
+
+clearBtn.addEventListener('click', () => {
+  if (objectUrl) URL.revokeObjectURL(objectUrl);
+  objectUrl = null;
+  selectedFile = null;
+  currentHistoryId = null;
+  imageInput.value = '';
+  preview.src = '';
+  preview.classList.add('hidden');
+  analyzeBtn.disabled = true;
+  clearBtn.classList.add('hidden');
+  result.classList.add('hidden');
+  resultEmpty.classList.remove('hidden');
+  feedbackBox.classList.add('hidden');
+  correctionForm.classList.add('hidden');
+  feedbackStatus.textContent = '';
+  statusEl.textContent = 'Choose a waste image to begin.';
   statusEl.classList.remove('error');
 });
 
@@ -44,6 +102,9 @@ analyzeBtn.addEventListener('click', async () => {
   formData.append('file', selectedFile);
 
   analyzeBtn.disabled = true;
+  clearBtn.disabled = true;
+  analyzeBtn.classList.add('loading');
+  analyzeBtn.textContent = 'Analyzing…';
   statusEl.textContent = 'Analyzing image…';
   statusEl.classList.remove('error');
   feedbackBox.classList.add('hidden');
@@ -82,6 +143,9 @@ analyzeBtn.addEventListener('click', async () => {
     statusEl.classList.add('error');
   } finally {
     analyzeBtn.disabled = false;
+    clearBtn.disabled = false;
+    analyzeBtn.classList.remove('loading');
+    analyzeBtn.textContent = 'Analyze Waste';
   }
 });
 

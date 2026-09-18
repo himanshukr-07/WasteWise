@@ -2,6 +2,7 @@ const form = document.getElementById('chatForm');
 const input = document.getElementById('question');
 const messages = document.getElementById('messages');
 const statusEl = document.getElementById('chatStatus');
+const quickPrompts = document.querySelectorAll('.quick-prompt');
 
 function addSourceCard(sources) {
   const card = document.createElement('div');
@@ -36,6 +37,13 @@ function addMessage(text, role) {
   messages.appendChild(div);
   messages.scrollTop = messages.scrollHeight;
 }
+
+quickPrompts.forEach((button) => {
+  button.addEventListener('click', () => {
+    input.value = button.dataset.question || '';
+    input.focus();
+  });
+});
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();

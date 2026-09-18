@@ -35,7 +35,13 @@
       <input id="question" type="text" placeholder="e.g. How should I dispose of a battery?" autocomplete="off" />
       <button class="btn primary" type="submit">Send</button>
     </form>
-    <p id="chatStatus" class="status"></p>
+    <div class="quick-prompts" aria-label="Suggested questions">
+      <span class="quick-label">Try:</span>
+      <button type="button" class="quick-prompt" data-question="How should I dispose of an old battery?">Battery disposal</button>
+      <button type="button" class="quick-prompt" data-question="How should plastic waste be handled?">Plastic waste</button>
+      <button type="button" class="quick-prompt" data-question="Why should waste be segregated?">Why segregate?</button>
+    </div>
+    <p id="chatStatus" class="status" aria-live="polite"></p>
   </section>
 </main>
 

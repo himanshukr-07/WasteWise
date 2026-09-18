@@ -517,3 +517,226 @@ th { color: var(--muted); font-size: .84rem; font-weight: 800; }
   .correction-row { flex-direction: column; align-items: stretch; }
   .correction-row .btn { width: 100%; }
 }
+
+
+/* Phase 15 — Final UI/UX polish */
+:root {
+  --shadow-soft: 0 12px 30px rgba(24, 49, 40, .06);
+  --shadow-hover: 0 18px 42px rgba(24, 49, 40, .10);
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+.topbar {
+  min-height: 68px;
+}
+
+.topbar nav a {
+  position: relative;
+  border-radius: 999px;
+  padding: 7px 10px;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+.topbar nav a:hover {
+  background: #f0f6f1;
+  transform: translateY(-1px);
+}
+
+.topbar nav .active {
+  background: var(--soft);
+}
+
+.btn {
+  min-height: 48px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .03);
+}
+
+.btn.loading {
+  position: relative;
+  gap: 9px;
+}
+
+.btn.loading::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255,255,255,.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.feature-card,
+.panel,
+.card,
+.metric-card,
+.category-card {
+  box-shadow: var(--shadow-soft);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.feature-card:hover,
+.category-card:hover,
+.metric-card:hover,
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: #d0dcd3;
+}
+
+.upload-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-box.dragging {
+  border-color: var(--accent);
+  background: var(--soft);
+  transform: scale(1.01);
+}
+
+.upload-box small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.preview {
+  border: 1px solid var(--line);
+}
+
+.scanner-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.scanner-actions .full {
+  width: 100%;
+  margin-top: 0;
+}
+
+.clear-btn {
+  width: auto;
+  min-width: 120px;
+  padding-inline: 16px;
+}
+
+.status {
+  border-radius: 10px;
+  padding: 7px 9px;
+}
+
+.status:not(:empty) {
+  background: #f2f5f2;
+}
+
+.status.error:not(:empty) {
+  background: #fff1ef;
+}
+
+.chat-panel {
+  box-shadow: var(--shadow-hover);
+}
+
+.messages {
+  scroll-padding-bottom: 18px;
+}
+
+.message {
+  box-shadow: 0 2px 8px rgba(24, 49, 40, .04);
+}
+
+.message.assistant::first-letter {
+  font-weight: 600;
+}
+
+.quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.quick-label {
+  color: var(--muted);
+  font-size: .82rem;
+  margin-right: 2px;
+}
+
+.quick-prompt {
+  border: 1px solid var(--line);
+  background: #fbfcfb;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 7px 11px;
+  cursor: pointer;
+  font-size: .82rem;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease;
+}
+
+.quick-prompt:hover {
+  border-color: #c7d7cc;
+  background: var(--soft);
+  transform: translateY(-1px);
+}
+
+.source-card {
+  box-shadow: 0 4px 12px rgba(24, 49, 40, .04);
+}
+
+.source-item a {
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.source-item a:hover {
+  background: var(--soft);
+}
+
+.table-wrap {
+  border-radius: 12px;
+}
+
+th { position: sticky; top: 0; background: #fff; }
+
+.dashboard-note {
+  box-shadow: var(--shadow-soft);
+}
+
+footer {
+  border-top: 1px solid rgba(221, 228, 222, .7);
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .topbar nav a { padding: 7px 9px; }
+  .scanner-actions { grid-template-columns: 1fr; }
+  .clear-btn { width: 100%; }
+  .quick-prompts { gap: 7px; }
+  .quick-prompt { flex: 1 1 auto; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .category-card,
+  .metric-card,
+  .card,
+  .btn,
+  .topbar nav a,
+  .quick-prompt,
+  .upload-box { transition: none !important; }
+  .btn.loading::before { animation: none; }
+}

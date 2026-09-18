@@ -29,14 +29,18 @@
 
   <section class="scanner-grid">
     <div class="panel">
-      <label class="upload-box" for="imageInput">
+      <label class="upload-box" for="imageInput" id="uploadBox" tabindex="0" role="button" aria-label="Upload a waste image">
         <div class="upload-icon">📷</div>
         <h2>Upload waste image</h2>
-        <p>JPG, JPEG, PNG or WEBP</p>
-        <input id="imageInput" type="file" accept="image/*" hidden />
+        <p>JPG, PNG or WEBP</p>
+        <small>Click, drag & drop, or take a photo on mobile</small>
+        <input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden />
       </label>
       <img id="preview" class="preview hidden" alt="Selected waste" />
-      <button id="analyzeBtn" class="btn primary full" disabled>Analyze Waste</button>
+      <div class="scanner-actions">
+        <button id="analyzeBtn" class="btn primary full" disabled>Analyze Waste</button>
+        <button id="clearBtn" class="btn secondary full clear-btn hidden" type="button">Clear image</button>
+      </div>
       <div id="status" class="status"></div>
     </div>
 
