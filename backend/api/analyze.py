@@ -1,21 +1,24 @@
+import logging
+
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
 from backend.services.history import add_scan
 from backend.services.rag import get_disposal_guidance
 from backend.services.responsible_ai import assess_scan
 from backend.services.vision import analyze_image
+from backend.services.security import validate_image_upload
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["analysis"])
 
 
 @router.post("/analyze")
 async def analyze_waste(file: UploadFile = File(...)) -> dict:
-    if not file.content_type or not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="Please upload an image file.")
-
     image_bytes = await file.read()
-    if not image_bytes:
-        raise HTTPException(status_code=400, detail="Uploaded image is empty.")
+    valid, error = validate_image_upload(content_type=file.content_type, image_bytes=image_bytes)
+    if not valid:
+        raise HTTPException(status_code=400, detail=error)
 
     try:
         vision = analyze_image(image_bytes)
@@ -46,4 +49,5 @@ async def analyze_waste(file: UploadFile = File(...)) -> dict:
             "history_id": record["id"],
         }
     except Exception as exc:
-        raise HTTPException(status_code=502, detail=f"AI analysis failed: {exc}") from exc
+        logger.exception("Waste analysis failed")
+        raise HTTPException(status_code=502, detail="AI analysis failed. Please try again.") from exc

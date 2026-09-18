@@ -1,7 +1,11 @@
+import logging
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from backend.services.rag import index_knowledge_base, knowledge_base_status
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["rag"])
 
@@ -20,4 +24,5 @@ def rag_reindex(request: ReindexRequest) -> dict:
     try:
         return index_knowledge_base(force=request.force)
     except Exception as exc:
-        raise HTTPException(status_code=502, detail=f"RAG indexing failed: {exc}") from exc
+        logger.exception("RAG indexing failed")
+        raise HTTPException(status_code=502, detail="RAG indexing failed. Please try again.") from exc
